@@ -23,6 +23,18 @@ import { JuegoNewAdminRoutedComponent } from './component/application/juego/rout
 import { JuegoPlistAdminRoutedComponent } from './component/application/juego/routed/juego-plist-admin-routed/juego-plist-admin-routed.component';
 import { JuegoRemoveAdminRoutedComponent } from './component/application/juego/routed/juego-remove-admin-routed/juego-remove-admin-routed.component';
 import { JuegoDetailAdminUnroutedComponent } from './component/application/juego/unrouted/admin/juego-detail-admin-unrouted/juego-detail-admin-unrouted.component';
+import { ComentariojuegoViewAdminRoutedComponent } from './component/application/comentariojuego/routed/comentariojuego-view-admin-routed/comentariojuego-view-admin-routed.component';
+import { ComentariojuegoEditAdminRoutedComponent } from './component/application/comentariojuego/routed/comentariojuego-edit-admin-routed/comentariojuego-edit-admin-routed.component';
+import { ComentariojuegoNewAdminRoutedComponent } from './component/application/comentariojuego/routed/comentariojuego-new-admin-routed/comentariojuego-new-admin-routed.component';
+import { ComentariojuegoPlistAdminRoutedComponent } from './component/application/comentariojuego/routed/comentariojuego-plist-admin-routed/comentariojuego-plist-admin-routed.component';
+import { ComentariojuegoRemoveAdminRoutedComponent } from './component/application/comentariojuego/routed/comentariojuego-remove-admin-routed/comentariojuego-remove-admin-routed.component';
+import { ComentariojuegoDetailAdminUnroutedComponent } from './component/application/comentariojuego/unrouted/comentariojuego-detail-admin-unrouted/comentariojuego-detail-admin-unrouted.component';
+import { ValoracionjuegoViewAdminRoutedComponent } from './component/application/valoracionjuego/routed/valoracionjuego-view-admin-routed/valoracionjuego-view-admin-routed.component';
+import { ValoracionjuegoEditAdminRoutedComponent } from './component/application/valoracionjuego/routed/valoracionjuego-edit-admin-routed/valoracionjuego-edit-admin-routed.component';
+import { ValoracionjuegoNewAdminRoutedComponent } from './component/application/valoracionjuego/routed/valoracionjuego-new-admin-routed/valoracionjuego-new-admin-routed.component';
+import { ValoracionjuegoPlistAdminRoutedComponent } from './component/application/valoracionjuego/routed/valoracionjuego-plist-admin-routed/valoracionjuego-plist-admin-routed.component';
+import { ValoracionjuegoRemoveAdminRoutedComponent } from './component/application/valoracionjuego/routed/valoracionjuego-remove-admin-routed/valoracionjuego-remove-admin-routed.component';
+import { ValoracionjuegoDetailAdminUnroutedComponent } from './component/application/valoracionjuego/unrouted/valoracionjuego-detail-admin-unrouted/valoracionjuego-detail-admin-unrouted.component';
 
 
 
@@ -43,7 +55,19 @@ import { JuegoDetailAdminUnroutedComponent } from './component/application/juego
     JuegoNewAdminRoutedComponent,
     JuegoPlistAdminRoutedComponent,
     JuegoRemoveAdminRoutedComponent,
-    JuegoDetailAdminUnroutedComponent
+    JuegoDetailAdminUnroutedComponent,
+    ComentariojuegoViewAdminRoutedComponent,
+    ComentariojuegoEditAdminRoutedComponent,
+    ComentariojuegoNewAdminRoutedComponent,
+    ComentariojuegoPlistAdminRoutedComponent,
+    ComentariojuegoRemoveAdminRoutedComponent,
+    ComentariojuegoDetailAdminUnroutedComponent,
+    ValoracionjuegoViewAdminRoutedComponent,
+    ValoracionjuegoEditAdminRoutedComponent,
+    ValoracionjuegoNewAdminRoutedComponent,
+    ValoracionjuegoPlistAdminRoutedComponent,
+    ValoracionjuegoRemoveAdminRoutedComponent,
+    ValoracionjuegoDetailAdminUnroutedComponent
     
     
   ],

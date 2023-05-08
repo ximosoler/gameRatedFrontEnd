@@ -15,7 +15,7 @@ export class ValoracionjuegoService {
   constructor(private oHttp: HttpClient) {
     this.url = `${baseURL}${this.entityURL}`;
   }
-  getDevelopersPlist(page: number, size: number, termino: string, id_usertype: number, strSortField: string, strOrderDirection: string): Observable<IPage<IValoracionjuego>> {
+  getValoracionjuegoPlist(page: number, size: number, termino: string, id_usertype: number, strSortField: string, strOrderDirection: string): Observable<IPage<IValoracionjuego>> {
     let params = new HttpParams()
       .set("page", page)
       .set("size", size);

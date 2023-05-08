@@ -15,7 +15,7 @@ export class ComentariojuegoService {
   constructor(private oHttp: HttpClient) {
     this.url = `${baseURL}${this.entityURL}`;
   }
-  getDevelopersPlist(page: number, size: number, termino: string, id_usertype: number, strSortField: string, strOrderDirection: string): Observable<IPage<IComentariojuego>> {
+  getComentariojuegoPlist(page: number, size: number, termino: string, id_usertype: number, strSortField: string, strOrderDirection: string): Observable<IPage<IComentariojuego>> {
     let params = new HttpParams()
       .set("page", page)
       .set("size", size);

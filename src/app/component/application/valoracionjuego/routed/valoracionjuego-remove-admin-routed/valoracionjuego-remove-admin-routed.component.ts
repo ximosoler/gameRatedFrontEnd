@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { JuegoService } from 'src/app/service/juego.service';
+import { ValoracionjuegoService } from 'src/app/service/valoracionjuego.service';
 import { Location } from '@angular/common';
 
 declare let bootstrap: any;
 
 @Component({
-  selector: 'app-juego-remove-admin-routed',
-  templateUrl: './juego-remove-admin-routed.component.html',
-  styleUrls: ['./juego-remove-admin-routed.component.css']
+  selector: 'app-valoracionjuego-remove-admin-routed',
+  templateUrl: './valoracionjuego-remove-admin-routed.component.html',
+  styleUrls: ['./valoracionjuego-remove-admin-routed.component.css']
 })
-export class JuegoRemoveAdminRoutedComponent implements OnInit {
+export class ValoracionjuegoRemoveAdminRoutedComponent implements OnInit {
 
-id: number = 0;
+  id: number = 0;
   msg: string = "";
 
   constructor(
     protected oLocation: Location,
     private oActivatedRoute: ActivatedRoute,
-    private oJuegoService: JuegoService,
+    private oValoracionjuegoService: ValoracionjuegoService,
   ) {
     this.id = oActivatedRoute.snapshot.params['id'];
   }
@@ -27,9 +27,9 @@ id: number = 0;
   }
 
   removeOne() {
-    this.oJuegoService.removeOne(this.id).subscribe({
+    this.oValoracionjuegoService.removeOne(this.id).subscribe({
       next: (data: number) => {
-        this.msg = "Juego " + this.id + " removed";
+        this.msg = "Valoracion " + this.id + " removed";
         const myModal = new bootstrap.Modal('#removeInfo', {
           keyboard: false
         })
