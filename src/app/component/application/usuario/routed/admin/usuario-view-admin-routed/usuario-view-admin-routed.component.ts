@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { IUsuario } from 'src/app/model/usuario-interface';
 import { UsuarioService } from 'src/app/service/usuario.service';
 
+
 @Component({
   selector: 'app-usuario-view-admin-routed',
   templateUrl: './usuario-view-admin-routed.component.html',
@@ -17,7 +18,6 @@ export class UsuarioViewAdminRoutedComponent {
     protected oRouter: Router,
     private oUsuarioService: UsuarioService
   ) {
-    console.log("hola usuario view")
     this.id = this.oActivatedRoute.snapshot.params['id'];
   }
 

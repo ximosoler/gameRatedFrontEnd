@@ -3,7 +3,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { baseURL } from 'src/environments/environment';
 import { IPage } from '../model/generic-types-interface';
 import { Observable } from 'rxjs';
-import { IUsuario } from '../model/usuario-interface';
+import { IUsuario, IUsuario2Send } from '../model/usuario-interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class UsuarioService {
   constructor(private oHttp: HttpClient) {
     this.url = `${baseURL}${this.entityURL}`;
   }
-  getDevelopersPlist(page: number, size: number, termino: string, id_usertype: number, strSortField: string, strOrderDirection: string): Observable<IPage<IUsuario>> {
+  getUsuarioPlist(page: number, size: number, termino: string, id_usertype: number, strSortField: string, strOrderDirection: string): Observable<IPage<IUsuario>> {
     let params = new HttpParams()
       .set("page", page)
       .set("size", size);
@@ -41,6 +42,19 @@ export class UsuarioService {
 
   removeOne(id: number): Observable<number> {
     return this.oHttp.delete<number>(this.url + '/' + id);
+  }
+
+  updateOne(oUsuario2Send: IUsuario2Send): Observable<number> {
+    return this.oHttp.put<number>(this.url, oUsuario2Send, { withCredentials: true });
+  }
+
+  
+  newOne(oUsuario2Send: IUsuario2Send): Observable<number> {
+    return this.oHttp.post<number>(this.url, oUsuario2Send, { withCredentials: true });
+  }
+
+  generate(): Observable<IUsuario> {
+    return this.oHttp.post<IUsuario>(this.url + "/generate", null, { withCredentials: true });
   }
 
 
