@@ -6,11 +6,10 @@ import { FormControl } from "@angular/forms";
 export interface IComentariojuego {
     id: number;
     texto: string;
-    fechahora: Date;
     usuario: IUsuario;
     juego: IJuego;
-    comentariojuego: IComentariojuego;
 }
+   
 
 export interface IComentariojuego2Form{
     id: FormControl<number>;

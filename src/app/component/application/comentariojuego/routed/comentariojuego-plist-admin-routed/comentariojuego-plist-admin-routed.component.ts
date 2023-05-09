@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IJuego } from 'src/app/model/juego-interface';
 import { ComentariojuegoService } from 'src/app/service/comentariojuego.service';
 import { IPage } from 'src/app/model/generic-types-interface';
 import { IComentariojuego } from 'src/app/model/comentariojuego-interface';

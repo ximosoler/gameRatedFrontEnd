@@ -38,19 +38,14 @@ export class ComentariojuegoEditAdminRoutedComponent implements OnInit {
 
   getOne() {
     this.oComentariojuegoService.getOne(this.id).subscribe({
-      next:(data:IComentariojuego)=>{
-        this.oComentariojuego= data;
+      next: (data: IComentariojuego) => {
+        this.oComentariojuego = data;
         console.log(data);
         this.oForm = <FormGroup>this.oFormBuilder.group({
           id: [data.id, [Validators.required]],
-          texto: [data.texto, [Validators.required]],
-          fechahora: [data.fechahora, [Validators.required]],
-          /*id_usuario: [data.id_usuario, [Validators.required]]*/
-          /*id_juego: [data.id_juego, [Validators.required]]*/
-          /*id_comentariojuego: [data.id_comentariojuego, [Validators.required]]*/
-
-
-          
+          texto: [data.texto, [Validators.required]],          
+          id_usuario: [data.usuario.id, [Validators.required]],
+          id_juego: [data.juego.id, [Validators.required]]
         })
       }
     })
