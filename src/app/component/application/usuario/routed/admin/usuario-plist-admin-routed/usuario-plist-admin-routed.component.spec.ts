@@ -10,7 +10,7 @@ describe('UsuarioPlistAdminRoutedComponent', () => {
   let fixture: ComponentFixture<UsuarioPlistAdminRoutedComponent>;
 
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  TestBed.configureTestingModule({
       declarations: [ UsuarioPlistAdminRoutedComponent ]
     })
     .compileComponents();

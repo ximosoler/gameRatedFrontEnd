@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
+
 import { UsuarioEditAdminRoutedComponent } from './usuario-edit-admin-routed.component';
 
 describe('DeveloperEditAdminRoutedComponent', () => {
@@ -25,5 +26,7 @@ describe('DeveloperEditAdminRoutedComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
 });
 

@@ -54,6 +54,48 @@ export class UsuarioEditAdminRoutedComponent implements OnInit {
     })
   }
 
+  onSubmit() {
+    console.log('onSubmit');
 
+    this.oUsuario2Send = {
+      id: this.oForm.value.id,
+      nick: this.oForm.value.nick,
+      pass: this.oForm.value.pass,
+      tipocuenta: this.oForm.value.tipocuenta,
+      
+    };
+
+    if (this.oForm.valid) {
+
+
+      console.log("Entra pero no va");
+      console.log(this.oUsuario2Send);
+
+      this.oUsuarioService.updateOne(this.oUsuario2Send).subscribe({
+        next: (data: number) => {
+          this.modalTitle = 'GAMERATED';
+          this.modalContent = 'User ' + this.id + ' updated';
+          this.oRouter.navigate(['/admin/user/view', this.id]);
+        },
+      });
+    }
+  }
+
+  showModal = () => {
+    this.myModal = new bootstrap.Modal(document.getElementById(this.mimodal), {
+      keyboard: false,
+    });
+    var myModalEl = document.getElementById(this.mimodal);
+
+    myModalEl.addEventListener('hidden.bs.modal', (event): void => {
+      this.oRouter.navigate(['/admin/usuario/view', this.id]);
+    });
+    this.myModal.show();
+  };
+
+
+  openModalFindUsertype(): void {
+
+  }
 
 }

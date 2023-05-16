@@ -13,7 +13,7 @@ import { IUsuario } from 'src/app/model/usuario-interface';
   styleUrls: ['./usuario-plist-admin-routed.component.css']
 })
 export class UsuarioPlistAdminRoutedComponent implements OnInit {
-
+  responseFromServer: IPage<IUsuario>;
   //
   strTermFilter: string = "";
   id_usertypeFilter: number = 0;
@@ -49,6 +49,17 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
           console.log(err);
         }
       })
+  }
+
+  generateUser(){
+
+    this.oUsuarioService.generate().subscribe({
+      next: (resp: IUsuario) => {
+
+        this.setPage(this.responseFromServer.totalPages)
+        this.getPage();
+      }
+    });
   }
 
   

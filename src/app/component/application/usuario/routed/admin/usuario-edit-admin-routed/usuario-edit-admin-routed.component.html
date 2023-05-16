@@ -1,3 +1,132 @@
-<p>
-  usuario-edit-admin-routed works!
-</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5">Editar usuario</h1>
+
+      <form novalidate [formGroup]="oForm" *ngIf="oForm" (ngSubmit)="onSubmit()">
+
+        <div class="mb-3 row">
+          <label for="inputNick" class="col-sm-2 col-form-label">Nick</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.nick.dirty && !oForm.controls.nick.errors?.['required'] &&
+              oForm.controls.nick.dirty && !oForm.controls.nick.errors?.['minlength']
+                && oForm.controls.nick.dirty && !oForm.controls.nick.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.nick.dirty &&  oForm.controls.nick.errors?.['minlength']
+                ||  oForm.controls.nick.dirty &&  oForm.controls.nick.errors?.['maxlength'] ||
+                oForm.controls.nick.dirty &&  oForm.controls.nick.errors?.['required']}" id="inputnick"
+              formControlName="nick">
+            <div id="inputnickFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.nick.dirty &&  oForm.controls.nick.errors?.['minlength']">
+              La longitud mínima es de 5 caracteres.
+            </div>
+            <div id="inputnickFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.nick.dirty &&  oForm.controls.nick.errors?.['maxlength']">
+              La longitud máxima es de 10 caracteres.
+            </div>
+            <div id="inputnickFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.nick.dirty &&  oForm.controls.nick.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+
+        <div class="mb-3 row">
+          <label for="inputPass" class="col-sm-2 col-form-label">Pass</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" [ngClass]="{'is-valid' : oForm.controls.pass.dirty && !oForm.controls.pass.errors?.['required'] &&
+              oForm.controls.pass.dirty && !oForm.controls.pass.errors?.['minlength']
+                && oForm.controls.pass.dirty && !oForm.controls.pass.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.pass.dirty &&  oForm.controls.pass.errors?.['minlength']
+                ||  oForm.controls.pass.dirty &&  oForm.controls.pass.errors?.['maxlength'] ||
+                oForm.controls.pass.dirty &&  oForm.controls.pass.errors?.['required']}" id="inputpass"
+              formControlName="pass">
+            <div id="inputpassFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.pass.dirty &&  oForm.controls.pass.errors?.['minlength']">
+              La longitud mínima es de 5 caracteres.
+            </div>
+            <div id="inputpassFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.pass.dirty &&  oForm.controls.pass.errors?.['maxlength']">
+              La longitud máxima es de 10 caracteres.
+            </div>
+            <div id="inputpassFeedback" class="invalid-feedback"
+              *ngIf="oForm.controls.pass.dirty &&  oForm.controls.pass.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="mb-3 row">
+          <label for="inputTipocuenta" class="col-sm-2 col-form-label">Tipo de cuenta</label>
+          <div class="col-sm-4 has-validation">
+            <input type="text" class="form-control" id="inputtipocuenta" formControlName="tipocuenta" [ngClass]="{'is-valid' :
+              oForm.controls.tipocuenta.dirty && !oForm.controls.tipocuenta.errors?.['required'] &&
+              oForm.controls.tipocuenta.dirty && !oForm.controls.tipocuenta.errors?.['minlength']
+                && oForm.controls.tipocuenta.dirty && !oForm.controls.tipocuenta.errors?.['maxlength'],
+                'is-invalid' :  oForm.controls.tipocuenta.dirty &&  oForm.controls.tipocuenta.errors?.['minlength']
+                ||  oForm.controls.tipocuenta.dirty &&  oForm.controls.tipocuenta.errors?.['maxlength'] ||
+                oForm.controls.tipocuenta.dirty &&  oForm.controls.tipocuenta.errors?.['required']}">
+            <div class="invalid-feedback"
+              *ngIf="oForm.controls.tipocuenta.dirty &&  oForm.controls.tipocuenta.errors?.['minlength']">
+              La longitud mínima es de 5 caracteres.
+            </div>
+            <div class="invalid-feedback"
+              *ngIf="oForm.controls.tipocuenta.dirty &&  oForm.controls.tipocuenta.errors?.['maxlength']">
+              La longitud máxima es de 10 caracteres.
+            </div>
+            <div class="invalid-feedback"
+              *ngIf="oForm.controls.tipocuenta.dirty &&  oForm.controls.tipocuenta.errors?.['required']">
+              El campo es obligatorio.
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="oForm.invalid || !oForm.dirty">Guardar y Aceptar</button>
+
+
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" [id]="mimodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+        {{modalContent}}
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="findTeam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
