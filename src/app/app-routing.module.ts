@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'admin/usuario/view/:id', component: UsuarioViewAdminRoutedComponent, title: 'Vista de usuarios' },
   { path: 'admin/usuario/edit/:id', component: UsuarioEditAdminRoutedComponent, title: 'Editar usuario'},
   { path: 'admin/usuario/new', component: UsuarioNewAdminRoutedComponent, title: 'Nuevo usuario' },
-  { path: 'admin/usuario/plist/usuario/:id', component: UsuarioPlistAdminRoutedComponent, title: 'Listado de usuarios'},
+  { path: 'admin/usuario/plist', component: UsuarioPlistAdminRoutedComponent, title: 'Listado de usuarios'},  
   { path: 'admin/usuario/remove/:id', component: UsuarioRemoveAdminRoutedComponent, title: 'Borrar usuario'},
 
   { path: 'admin/usuario/detail/:id', component: UsuarioDetailAdminUnroutedComponent, title: 'Detalles de usuario'},

@@ -4,46 +4,48 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { IPage } from 'src/app/model/generic-types-interface';
 import { HttpErrorResponse } from '@angular/common/http';
 import { IUsuario } from 'src/app/model/usuario-interface';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { PaginationService } from 'src/app/service/pagination.service';
+
 
 
 
 @Component({
   selector: 'app-usuario-plist-admin-routed',
   templateUrl: './usuario-plist-admin-routed.component.html',
-  styleUrls: ['./usuario-plist-admin-routed.component.css']
+  styleUrls: ['./usuario-plist-admin-routed.component.css'],
 })
 export class UsuarioPlistAdminRoutedComponent implements OnInit {
-  responseFromServer: IPage<IUsuario>;
-  //
-  strTermFilter: string = "";
-  id_usertypeFilter: number = 0;
-  numberOfElements: number = 5;
-  page: number = 0;
-  sortField: string = "";
-  sortDirection: string = "";
 
+  oPage: IPage<IUsuario>;
+  aPaginationBar: string[];
+  strSortField: string = "";
+  strSortDirection: string = "";
 
   constructor(
     protected oRouter: Router,
     private oUsuarioService: UsuarioService,
-    ) { 
-      this.oRouter.navigate(['/home']);
-
+    private oPaginationService: PaginationService
+  ) {
+    // this.oRouter.navigate(['/home']);
+    this.oPage = {} as IPage<IUsuario>;
+    this.oPage.number = 1;
+    this.oPage.size = 10;
   }
 
   ngOnInit() {
     this.getPage();
-
   }
 
   getPage() {
-    this.oUsuarioService.getUsuarioPlist(this.page, this.numberOfElements,
-      this.strTermFilter, this.id_usertypeFilter, this.sortField, this.sortDirection)
+    this.oUsuarioService.getUsuarioPlist(this.oPage.number, this.oPage.size, "", 0, "", "")
       .subscribe({
         next: (resp: IPage<IUsuario>) => {
-          if (this.page > resp.totalPages - 1) {
-            this.page = resp.totalPages - 1;
+          this.oPage = resp;
+          if (this.oPage.number > resp.totalPages - 1) {
+            this.oPage.number = resp.totalPages - 1;
           }
+          this.aPaginationBar = this.oPaginationService.pagination(this.oPage.totalPages, this.oPage.number);
         },
         error: (err: HttpErrorResponse) => {
           console.log(err);
@@ -51,28 +53,20 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
       })
   }
 
-  generateUser(){
 
-    this.oUsuarioService.generate().subscribe({
-      next: (resp: IUsuario) => {
-
-        this.setPage(this.responseFromServer.totalPages)
-        this.getPage();
-      }
-    });
-  }
-
-  
-  setPage(e: number) {
-    this.page = (e - 1);
+  onSetPage = (nPage: number) => {
+    this.oPage.number = nPage - 1; //pagination component starts at 1, but spring data starts at 0
     this.getPage();
+    return false;
   }
 
-  setRpp(rpp: number) {
-    this.numberOfElements = rpp;
+  onSetRpp(nRpp: number) {
+    this.oPage.size = nRpp;
     this.getPage();
+    return false;
   }
 
+  /*
   setFilter(term: string): void {
     this.strTermFilter = term;
     this.getPage();
@@ -82,16 +76,21 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
     this.id_usertypeFilter = id;
     this.getPage();
   }
+*/
 
   setOrder(order: string): void {
-    this.sortField = order;
-    if (this.sortDirection == "asc") {
-      this.sortDirection = "desc";
+    this.strSortField = order;
+    if (this.strSortDirection == "asc") {
+      this.strSortDirection = "desc";
     } else {
-      this.sortDirection = "asc";
+      this.strSortDirection = "asc";
     }
     this.getPage();
   }
+
+
+
+
 
 }
 

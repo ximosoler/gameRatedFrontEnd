@@ -3,56 +3,67 @@
     <div class="col">
       <h1 class="text-center mb-5 text-decoration-underline">Listado de usuarios</h1>
       <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
-        <a [routerLink]="['/admin/usuario/new']" class="btn btn-success mx-3">Añadir usuario</a>
-        <app-search-unrouted [placeHolder]="'Buscar usuario'" (onSearch)="setFilter( $event )"></app-search-unrouted>
+        <a [routerLink]="['./admin/user/new']" class="btn btn-success mx-3">Añadir usuario</a>
+
+        <!-- 
+    
         <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer?.numberOfElements"
         (eeRpp)="this.setRpp($event)"></app-dropdown-register-page>
+        
+      -->
+
+
       </div>
       <div class="col-md d-flex">
-        <app-pagination-unrouted [nPage]="responseFromServer.number + 1" [nTotalPages]="responseFromServer.totalPages"
-          (eePage)="setPage($event)"></app-pagination-unrouted>
-      </div>
-      <div class="d-flex justify-content-end mb-2 ">
-        <button class="btn btn-success" (click)="generateUser()">Generar usuario aleatorio</button>
-      </div>
-      <div class="col-md text-start">
-        <h5 class="text-muted" *ngIf="strTermFilter!=''">Filtrando por {{strTermFilter}} (borrar para resetear)</h5>
-        <button class="btn btn-outline-danger" *ngIf="id_usertypeFilter!=0" (click)="setFilterByUsertype(0)">
-          <i class="bi bi-x-circle"></i> Reset tipousuario {{id_usertypeFilter}} filter</button>
+
+
+        <nav aria-label="pagination">
+          <ul class="pagination">
+            <li class="page-item" aria-current="page" *ngFor="let p of aPaginationBar"
+              [ngClass]="{'active': ((oPage.number+1) + '' == p)}">
+              <a class="page-link" (click)="onSetPage(+p)" href="#">{{p}}</a>
+            </li>
+          </ul>
+        </nav>
+
+
       </div>
       <div class="col-md text-end">
-        <h5 class="text-muted">Total de registros en la consulta {{responseFromServer?.totalElements}}</h5>
+        <h5 class="text-muted">Total de registros en la consulta {{oPage?.totalElements}}</h5>
       </div>
       <table class="table table-bordered table-striped table-hover text-center">
         <thead style="background-color: #6d5dfc; color: white;">
           <tr>
-            <th (click)="setOrder('id')" >ID
-              <span *ngIf="sortField=='id'&&sortDirection=='asc'">🔼</span>
-              <span *ngIf="sortField=='id'&&sortDirection=='desc'">🔽</span>
+            <th (click)="setOrder('id')">ID
+              <span *ngIf="strSortField=='id'&&strSortDirection=='asc'">🔼</span>
+              <span *ngIf="strSortField=='id'&&strSortDirection=='desc'">🔽</span>
             </th>
             <th (click)="setOrder('nick')">NICK
-              <span *ngIf="sortField=='nick'&&sortDirection=='asc'">🔼</span>
-              <span *ngIf="sortField=='nick'&&sortDirection=='desc'">🔽</span>
+              <span *ngIf="strSortField=='nick'&&strSortDirection=='asc'">🔼</span>
+              <span *ngIf="strSortField=='nick'&&strSortDirection=='desc'">🔽</span>
             </th>
             <th (click)="setOrder('pass')">PASS
-              <span *ngIf="sortField=='pass'&&sortDirection=='asc'">🔼</span>
-              <span *ngIf="sortField=='pass'&&sortDirection=='desc'">🔽</span>
+              <span *ngIf="strSortField=='pass'&&strSortDirection=='asc'">🔼</span>
+              <span *ngIf="strSortField=='pass'&&strSortDirection=='desc'">🔽</span>
             </th>
             <th (click)="setOrder('tipocuenta')">TIPO DE CUENTA
-              <span *ngIf="sortField=='tipocuenta'&&sortDirection=='asc'">🔼</span>
-              <span *ngIf="sortField=='tipocuenta'&&sortDirection=='desc'">🔽</span>
+              <span *ngIf="strSortField=='tipocuenta'&&strSortDirection=='asc'">🔼</span>
+              <span *ngIf="strSortField=='tipocuenta'&&strSortDirection=='desc'">🔽</span>
             </th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let usuario of responseFromServer?.content">
+          <tr *ngFor="let usuario of oPage?.content">
             <td>{{usuario.id}} </td>
             <td>{{usuario.nick}}</td>
             <td>{{usuario.pass}}</td>
             <td>{{usuario.tipocuenta}}</td>
+            <!-- 
             <td (click)="setFilterByUsertype(usuario.id)">{{usuario.id}}-{{usuario.nick}}</td>
+            -->
+            <td>{{usuario.id}}-{{usuario.nick}}</td>
             <td>
-              <div class="btn-group "  role="group" aria-label="Herramientas">
+              <div class="btn-group " role="group" aria-label="Herramientas">
                 <button class="btn btn-sm btn-info" [routerLink]="['/admin/usuario/view',usuario.id]">
                   <i class="bi bi-eye-fill"></i>
                 </button>

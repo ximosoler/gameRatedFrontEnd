@@ -45,7 +45,6 @@ export class ComentariojuegoNewAdminRoutedComponent implements OnInit {
         this.oForm = <FormGroup>this.oFormBuilder.group({
           id: [data.id, [Validators.required]],
           texto: [data.texto, [Validators.required]],
-          fechahora: [data.fechahora, [Validators.required]],
           /*id_usuario: [data.id_usuario, [Validators.required]]*/
           /*id_juego: [data.id_juego, [Validators.required]]*/
           /*id_comentariojuego: [data.id_comentariojuego, [Validators.required]]*/
