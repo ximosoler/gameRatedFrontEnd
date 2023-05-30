@@ -13,7 +13,6 @@ declare let bootstrap: any;
 })
 export class UsuarioNewAdminRoutedComponent implements OnInit {
 
- 
   id: number = 0;
   oUsuario: IUsuario = null;
   oUsuario2Form: IUsuario2Form = null;
@@ -25,24 +24,33 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
   modalTitle: string = "";
   modalContent: string = "";
 
-
   constructor(
     private oActivatedRoute: ActivatedRoute,
     private oRouter: Router,
     private oUsuarioService: UsuarioService,
     private oFormBuilder: FormBuilder
   ) {
-    this.id = this.oActivatedRoute.snapshot.params['id'];
+    
   }
 
   ngOnInit() {
-    this.getOne();
+    
+    this.oForm = <FormGroup>this.oFormBuilder.group({
+      id: [''],
+      nick: ['', [Validators.required]],
+      pass: ['', [Validators.required]],
+      tipocuenta: ['', [Validators.required]]
+    })
+  }
+
+  onrafa() {
+    console.log("onrafa");
   }
 
   getOne() {
     this.oUsuarioService.getOne(this.id).subscribe({
-      next:(data:IUsuario)=>{
-        this.oUsuario= data;
+      next: (data: IUsuario) => {
+        this.oUsuario = data;
         console.log(data);
         this.oForm = <FormGroup>this.oFormBuilder.group({
           id: [data.id, [Validators.required]],
@@ -54,7 +62,7 @@ export class UsuarioNewAdminRoutedComponent implements OnInit {
     })
   }
 
-  onSubmit() {
+  onSubmit(): void {
     console.log("onSubmit");
     this.oUsuario2Send = {
       id: this.oForm.value.id,

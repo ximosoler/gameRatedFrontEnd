@@ -34,6 +34,8 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.oPage.number = 0;
+    this.oPage.size = 10;
     this.getPage();
   }
 
@@ -52,7 +54,6 @@ export class UsuarioPlistAdminRoutedComponent implements OnInit {
         }
       })
   }
-
 
   onSetPage = (nPage: number) => {
     this.oPage.number = nPage - 1; //pagination component starts at 1, but spring data starts at 0

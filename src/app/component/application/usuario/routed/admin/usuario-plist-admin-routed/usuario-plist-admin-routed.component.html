@@ -20,7 +20,7 @@
         <nav aria-label="pagination">
           <ul class="pagination">
             <li class="page-item" aria-current="page" *ngFor="let p of aPaginationBar"
-              [ngClass]="{'active': ((oPage.number+1) + '' == p)}">
+              [ngClass]="{'active': ((oPage.number) + 1 + '' == p)}">
               <a class="page-link" (click)="onSetPage(+p)" href="#">{{p}}</a>
             </li>
           </ul>
@@ -61,7 +61,6 @@
             <!-- 
             <td (click)="setFilterByUsertype(usuario.id)">{{usuario.id}}-{{usuario.nick}}</td>
             -->
-            <td>{{usuario.id}}-{{usuario.nick}}</td>
             <td>
               <div class="btn-group " role="group" aria-label="Herramientas">
                 <button class="btn btn-sm btn-info" [routerLink]="['/admin/usuario/view',usuario.id]">

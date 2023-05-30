@@ -2,12 +2,15 @@
   <div class="row">
     <div class="col">
       <h1 class="text-center mb-5 text-decoration-underline">Alta de Usuario</h1>
-      
-      <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()" >        
+
+      <button (click)="onrafa()">rafa</button>
+
+      <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
+        
         <div class="mb-3 row">
           <label for="inputID" class="col-sm-2 col-form-label">ID</label>
           <div class="col-sm-2">
-            <input type="text" class="form-control" id="inputID" formControlnick="id" readonly>
+            <input type="text" class="form-control" id="inputID" formControlName="id" readonly>
           </div>
         </div>
 
@@ -20,7 +23,7 @@
               'is-invalid' :  oForm.controls.nick.dirty &&  oForm.controls.nick.errors?.['minlength'] 
               ||  oForm.controls.nick.dirty &&  oForm.controls.nick.errors?.['maxlength'] ||  
               oForm.controls.nick.dirty &&  oForm.controls.nick.errors?.['required']}" id="inputnick"
-              formControlnick="nick">
+              formControlName="nick">
             <div id="inputnickFeedback" class="invalid-feedback"
               *ngIf="oForm.controls.nick.dirty &&  oForm.controls.nick.errors?.['minlength']">
               La longitud mínima es de 5 caracteres.
@@ -45,7 +48,7 @@
               'is-invalid' :  oForm.controls.pass.dirty &&  oForm.controls.pass.errors?.['minlength'] 
               ||  oForm.controls.pass.dirty &&  oForm.controls.pass.errors?.['maxlength'] ||  
               oForm.controls.pass.dirty &&  oForm.controls.pass.errors?.['required']}" id="inputpass"
-              formControlnick="pass">
+              formControlName="pass">
             <div id="inputpassFeedback" class="invalid-feedback"
               *ngIf="oForm.controls.pass.dirty &&  oForm.controls.pass.errors?.['minlength']">
               La longitud mínima es de 5 caracteres.
@@ -70,7 +73,7 @@
               'is-invalid' :  oForm.controls.tipocuenta.dirty &&  oForm.controls.tipocuenta.errors?.['minlength'] 
               ||  oForm.controls.tipocuenta.dirty &&  oForm.controls.tipocuenta.errors?.['maxlength'] ||  
               oForm.controls.tipocuenta.dirty &&  oForm.controls.tipocuenta.errors?.['required']}" id="inputtipocuenta"
-              formControlnick="tipocuenta">
+              formControlName="tipocuenta">
             <div id="inputtipocuentaFeedback" class="invalid-feedback"
               *ngIf="oForm.controls.tipocuenta.dirty &&  oForm.controls.tipocuenta.errors?.['minlength']">
               La longitud mínima es de 5 caracteres.
@@ -85,12 +88,18 @@
             </div>
           </div>
         </div>
-        <br>
-        <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
-        <button type="submit" class="btn btn-success mx-3" [disabled]="oForm.invalid || !oForm.dirty">Guardar y Aceptar</button>
-      </div>
-      </form>
         
+        <br>
+
+        <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+          <button type="submit" class="btn btn-success mx-3" [disabled]="oForm.invalid || oForm.pristine">Guardar y
+            Aceptar</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" [id]="mimodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
