@@ -1,9 +1,10 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col">
-      <h1 class="text-center mb-5">Editar usuario</h1>
+      <h1 class="text-center mb-5 text-decoration-underline">Editar usuario</h1>
+      
 
-      <form novalidate [formGroup]="oForm" *ngIf="oForm" (ngSubmit)="onSubmit()">
+      <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
 
         <div class="mb-3 row">
           <label for="inputNick" class="col-sm-2 col-form-label">Nick</label>
@@ -84,10 +85,10 @@
             </div>
           </div>
         </div>
-
-        <button type="submit" class="btn btn-primary" [disabled]="oForm.invalid || !oForm.dirty">Guardar y Aceptar</button>
-
-
+        <br>
+        <div class="col-md text-end d-flex justify-content-center align-items-center mb-3">
+        <button type="submit" class="btn btn-success mx-3" [disabled]="oForm.invalid || !oForm.dirty">Guardar y Aceptar</button>
+        </div>
 
       </form>
 

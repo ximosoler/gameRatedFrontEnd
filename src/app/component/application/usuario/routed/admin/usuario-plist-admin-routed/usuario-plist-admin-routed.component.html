@@ -3,7 +3,7 @@
     <div class="col">
       <h1 class="text-center mb-5 text-decoration-underline">Listado de usuarios</h1>
       <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
-        <a [routerLink]="['./admin/user/new']" class="btn btn-success mx-3">Añadir usuario</a>
+        <a [routerLink]="['/admin/usuario/new']" class="btn btn-success mx-3">Añadir usuario</a>
 
         <!-- 
     
@@ -32,7 +32,7 @@
         <h5 class="text-muted">Total de registros en la consulta {{oPage?.totalElements}}</h5>
       </div>
       <table class="table table-bordered table-striped table-hover text-center">
-        <thead style="background-color: #6d5dfc; color: white;">
+        <thead style="background-color: #0c0c0c; color: white;">
           <tr>
             <th (click)="setOrder('id')">ID
               <span *ngIf="strSortField=='id'&&strSortDirection=='asc'">🔼</span>

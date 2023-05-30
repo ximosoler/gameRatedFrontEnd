@@ -1,9 +1,9 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col">
-      <h1 class="text-center mb-5">Alta de Developer</h1>
+      <h1 class="text-center mb-5 text-decoration-underline">Alta de Usuario</h1>
       
-      <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">        
+      <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()" >        
         <div class="mb-3 row">
           <label for="inputID" class="col-sm-2 col-form-label">ID</label>
           <div class="col-sm-2">
@@ -85,7 +85,11 @@
             </div>
           </div>
         </div>
-
+        <br>
+        <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+        <button type="submit" class="btn btn-success mx-3" [disabled]="oForm.invalid || !oForm.dirty">Guardar y Aceptar</button>
+      </div>
+      </form>
         
 
 <div class="modal fade" [id]="mimodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
