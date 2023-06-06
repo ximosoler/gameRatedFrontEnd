@@ -1,3 +1,97 @@
-<p>
-  juego-plist-admin-routed works!
-</p>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center mb-5 text-decoration-underline">Listado de juegos</h1>
+      <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
+        <a [routerLink]="['/admin/juego/new']" class="btn btn-success mx-3">Añadir juego</a>
+
+        <!-- 
+    
+        <app-dropdown-register-page class="mx-2" [PageSize]="responseFromServer?.numberOfElements"
+        (eeRpp)="this.setRpp($event)"></app-dropdown-register-page>
+        
+      -->
+
+
+      </div>
+      <div class="col-md d-flex">
+
+
+        <nav aria-label="pagination">
+          <ul class="pagination">
+            <li class="page-item" aria-current="page" *ngFor="let p of aPaginationBar"
+              [ngClass]="{'active': ((oPage.number) + 1 + '' == p)}">
+              <a class="page-link" (click)="onSetPage(+p)" href="#">{{p}}</a>
+            </li>
+          </ul>
+        </nav>
+
+
+      </div>
+      <div class="col-md text-end">
+        <h5 class="text-muted">Total de registros en la consulta {{oPage?.totalElements}}</h5>
+      </div>
+      <table class="table table-bordered table-striped table-hover text-center">
+        <thead style="background-color: #0c0c0c; color: white;">
+          <tr>
+            <th (click)="setOrder('id')">ID
+              <span *ngIf="strSortField=='id'&&strSortDirection=='asc'">🔼</span>
+              <span *ngIf="strSortField=='id'&&strSortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('titulo')">TITULO
+              <span *ngIf="strSortField=='titulo'&&strSortDirection=='asc'">🔼</span>
+              <span *ngIf="strSortField=='titulo'&&strSortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('desarrolladora')">DESARROLLADORA
+              <span *ngIf="strSortField=='desarrolladora'&&strSortDirection=='asc'">🔼</span>
+              <span *ngIf="strSortField=='desarrolladora'&&strSortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('plataforma')">PLATAFORMA
+              <span *ngIf="strSortField=='plataforma'&&strSortDirection=='asc'">🔼</span>
+              <span *ngIf="strSortField=='plataforma'&&strSortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('fechasalida')">FECHASALIDA
+              <span *ngIf="strSortField=='fechasalida'&&strSortDirection=='asc'">🔼</span>
+              <span *ngIf="strSortField=='fechasalida'&&strSortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('genero')">GENERO
+              <span *ngIf="strSortField=='genero'&&strSortDirection=='asc'">🔼</span>
+              <span *ngIf="strSortField=='genero'&&strSortDirection=='desc'">🔽</span>
+            </th>
+            <th (click)="setOrder('duracion')">DURACION
+              <span *ngIf="strSortField=='duracion'&&strSortDirection=='asc'">🔼</span>
+              <span *ngIf="strSortField=='duracion'&&strSortDirection=='desc'">🔽</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let juego of oPage?.content">
+            <td>{{juego.id}} </td>
+            <td>{{juego.titulo}}</td>
+            <td>{{juego.desarrolladora}}</td>
+            <td>{{juego.plataforma}}</td>
+            <td>{{juego.fechasalida}}</td>
+            <td>{{juego.genero}}</td>
+            <td>{{juego.duracion}}</td>
+            <!-- 
+            <td (click)="setFilterByUsertype(usuario.id)">{{usuario.id}}-{{usuario.nick}}</td>
+            -->
+            <td>
+              <div class="btn-group " role="group" aria-label="Herramientas">
+                <button class="btn btn-sm btn-info" [routerLink]="['/admin/juego/view',juego.id]">
+                  <i class="bi bi-eye-fill"></i>
+                </button>
+                <button class="btn btn-sm btn-secondary" [routerLink]="['/admin/juego/edit',juego.id]">
+                  <i class="bi bi-pencil-fill"></i>
+                </button>
+                <button class="btn btn-sm btn-danger" [routerLink]="['/admin/juego/remove',juego.id]">
+                  <i class="bi bi-trash-fill"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

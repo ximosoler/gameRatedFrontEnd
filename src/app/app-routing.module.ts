@@ -42,7 +42,7 @@ const routes: Routes = [
   { path: 'admin/juego/view/:id', component: JuegoViewAdminRoutedComponent, title: 'Vista de juego' },
   { path: 'admin/juego/edit/:id', component: JuegoEditAdminRoutedComponent, title: 'Editar juego'},
   { path: 'admin/juego/new', component: JuegoNewAdminRoutedComponent, title: 'Nuevo juego' },
-  { path: 'admin/juego/plist/juego/:id', component: JuegoPlistAdminRoutedComponent, title: 'Listado de juegos'},
+  { path: 'admin/juego/plist/juego', component: JuegoPlistAdminRoutedComponent, title: 'Listado de juegos'},
   { path: 'admin/juego/remove/:id', component: JuegoRemoveAdminRoutedComponent, title: 'Borrar juego'},
 
   { path: 'admin/juego/detail/:id', component: JuegoDetailAdminUnroutedComponent, title: 'Detalles de juego'},
