@@ -3,7 +3,7 @@
     <div class="col">
       <h1 class="text-center mb-5 text-decoration-underline">Alta de Usuario</h1>
 
-      <button (click)="onrafa()">rafa</button>
+      
 
       <form novalidate [formGroup]="oForm" (ngSubmit)="onSubmit()">
         
@@ -92,7 +92,7 @@
         <br>
 
         <div class="col-md text-end d-flex justify-content-center align-items-center mb-3 ">
-          <button type="submit" class="btn btn-success mx-3" [disabled]="oForm.invalid || oForm.pristine">Guardar y
+          <button type="submit" class="btn btn-success mx-3" [disabled]="oForm.invalid || oForm.pristine" [routerLink]="['/admin/usuario/plist/usuario']">Guardar y
             Aceptar</button>
         </div>
       </form>
