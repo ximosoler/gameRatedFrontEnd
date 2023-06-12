@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './component/shared/routed/login/login.component';
 import { HomeComponent } from './component/shared/routed/home/home.component';
 import { UsuarioViewAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-view-admin-routed/usuario-view-admin-routed.component';
 import { UsuarioEditAdminRoutedComponent } from './component/application/usuario/routed/admin/usuario-edit-admin-routed/usuario-edit-admin-routed.component';
@@ -22,11 +23,14 @@ import { ComentariojuegoDetailAdminUnroutedComponent } from './component/applica
 import { ValoracionjuegoViewAdminRoutedComponent } from './component/application/valoracionjuego/routed/valoracionjuego-view-admin-routed/valoracionjuego-view-admin-routed.component';
 import { ValoracionjuegoEditAdminRoutedComponent } from './component/application/valoracionjuego/routed/valoracionjuego-edit-admin-routed/valoracionjuego-edit-admin-routed.component';
 import { ValoracionjuegoNewAdminRoutedComponent } from './component/application/valoracionjuego/routed/valoracionjuego-new-admin-routed/valoracionjuego-new-admin-routed.component';
+import { LogoutComponent } from './component/shared/routed/logout/logout.component';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent, title: 'Home' },
   { path: 'home', component: HomeComponent, title: 'Home' },
+  { path: 'login', component: LoginComponent },  
+  { path: 'logout', component: LogoutComponent },  
 
 
 
